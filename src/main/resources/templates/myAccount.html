@@ -23,7 +23,7 @@
             <div class="col-md-9 col-md-offset-3">
 
                 <ul class="nav nav-tabs">
-                    <li class="nav-item"><a class="nav-link active" href="#tab-1" data-toggle="tab"><span
+                    <li class="nav-item"><a class="nav-link" href="#tab-1" data-toggle="tab"><span
                                 style="color:red;">Create new
                                 account</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab-2" data-toggle="tab"><span
@@ -33,12 +33,85 @@
                                 style="color:red;">Forget
                                 Password</span></a></li>
                 </ul>
+                <div class="tab-content">
 
+                    <div class="tab-pane fade" id="tab-1">
+                        <div class="card-group">
+                            <div class="card card-default" style="border: none;">
+                                <div class="card-body" style="background-color: #ededed; margin-top: 20px;">
+                                    <form>
+                                        <div>
+                                            <label for="newUsername">* Username: </label> <input required="required"
+                                                type="text" class="form-control" id="newUsername" name="username" />
+                                            <p style="color: #828282">Enter your username here.</p>
+                                        </div>
+
+                                        <div>
+                                            <label for="email">* Email Address: </label> <input required="required"
+                                                type="text" class="form-control" id="email" name="email" />
+                                            <p style="color: #828282">A valid email address. All
+                                                emails from the system withll be sent to this address. The
+                                                email address is not made public and will only be used if
+                                                you wish to receive a new password or wish to receive
+                                                certain notification.</p>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Create new account</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- log in -->
+                    <div class="tab-pane fade" id="tab-2">
+                        <div class="card-group">
+                            <div class="card card-default" style="border: none;">
+                                <div class="card-body" style="background-color: #ededed; margin-top: 20px;">
+                                    <form>
+                                        <div>
+                                            <label for="newUsername">* Username: </label> <input required="required"
+                                                type="text" class="form-control" id="newUsername" name="username" />
+                                            <p style="color: #828282">Enter your username here.</p>
+                                        </div>
+
+                                        <div>
+                                            <label for="password">* Password: </label> <input required="required"
+                                                type="password" class="form-control" id="password" name="password" />
+                                            <p style="color: #828282">Enter the password that accompanies your username
+                                            </p>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Log in</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- forget password -->
+                    <div class="tab-pane fade" id="tab-3">
+                        <div class="card-group">
+                            <div class="card card-default" style="border: none;">
+                                <div class="card-body" style="background-color: #ededed; margin-top: 20px;">
+                                    <form>
+                                        <div>
+                                            <label for="recoverEmail">* Your Email: </label> <input required="required"
+                                                type="text" class="form-control" id="recoverEmail" name="email" />
+                                            <p style="color: #828282">Enter your registered email address here.</p>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div th:replace="commen/header :: scripts" />
+        <div th:replace="commen/header :: scripts" />
 
 </body>
 
