@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan("com.bookstore.controller")
+@ComponentScan("com.bookstore.domain")
 public class DemoApplication {
 
 	public static void main(String[] args) {
