@@ -23,19 +23,19 @@
             <div class="col-md-9 col-md-offset-3">
 
                 <ul class="nav nav-tabs">
-                    <li class="nav-item"><a class="nav-link" href="#tab-1" data-toggle="tab"><span
-                                style="color:red;">Create new
+                    <li class="nav-item" th:classappend="${classActiveNewAccount}? 'active'"><a class="nav-link"
+                            href="#tab-1" data-toggle="tab"><span style="color:red;">Create new
                                 account</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tab-2" data-toggle="tab"><span
-                                style="color:red;">Log in</span></a>
+                    <li class="nav-item" th:classappend="${classActiveLogin}? 'active'"><a class="nav-link"
+                            href="#tab-2" data-toggle="tab"><span style="color:red;">Log in</span></a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#tab-3" data-toggle="tab"><span
-                                style="color:red;">Forget
+                    <li class="nav-item" th:classappend="${classActiveForgotPassword}? 'active'"><a class="nav-link"
+                            href="#tab-3" data-toggle="tab"><span style="color:red;">Forgot
                                 Password</span></a></li>
                 </ul>
                 <div class="tab-content">
 
-                    <div class="tab-pane fade" id="tab-1">
+                    <div class="tab-pane fade" id="tab-1" th:classappend="${classActiveNewAccount}? 'in active'">
                         <div class="card-group">
                             <div class="card card-default" style="border: none;">
                                 <div class="card-body" style="background-color: #ededed; margin-top: 20px;">
@@ -64,7 +64,7 @@
                     </div>
 
                     <!-- log in -->
-                    <div class="tab-pane fade" id="tab-2">
+                    <div class="tab-pane fade" id="tab-2" th:classappend="${classActiveLogin}? 'in active'">
                         <div class="card-group">
                             <div class="card card-default" style="border: none;">
                                 <div class="card-body" style="background-color: #ededed; margin-top: 20px;">
@@ -89,8 +89,8 @@
                         </div>
                     </div>
 
-                    <!-- forget password -->
-                    <div class="tab-pane fade" id="tab-3">
+                    <!-- forgot password -->
+                    <div class="tab-pane fade" id="tab-3" th:classappend="${classActiveForgotPassword}? 'active'">
                         <div class="card-group">
                             <div class="card card-default" style="border: none;">
                                 <div class="card-body" style="background-color: #ededed; margin-top: 20px;">
