@@ -28,14 +28,19 @@ public class HomeController {
 	}
 
 	@RequestMapping("/forgotPassword")
-	public String forgotPassword(Locale locale, @RequestParam("token") String token, Model model) {
-		PasswordResetToken passToken = userService.getPasswordResetToken(token);
+	public String forgotPassword(Model model) {
 		model.addAttribute("classActiveForgotPassword", true);
 		return "myAccount";
 	}
 
 	@RequestMapping("/newUser")
-	public String newUser(Model model) {
+	public String newUser(Locale locale, @RequestParam("token") String token, Model model) {
+		PasswordResetToken passToken = userService.getPasswordResetToken(token);
+		if (passToken == null) {
+			String message = "Invalid Token.";
+			model.addAttribute("message", message);
+			return "redirect:/badRequest";
+		}
 		model.addAttribute("classActiveNewUser", true);
 		return "myAccount";
 	}
