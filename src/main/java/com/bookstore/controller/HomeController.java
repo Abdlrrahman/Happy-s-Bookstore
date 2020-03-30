@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 
 import com.bookstore.domain.User;
 import com.bookstore.domain.security.PasswordResetToken;
@@ -25,7 +27,6 @@ import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.service.UserService;
 import com.bookstore.service.impl.UserSecurityService;
-import com.bookstore.utility.JavaMailSender;
 import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.SecurityUtility;
 
