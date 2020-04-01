@@ -6,6 +6,9 @@ import com.bookstore.domain.User;
 import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.UserRole;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public interface UserService {
     PasswordResetToken getPasswordResetToken(final String token);
 
