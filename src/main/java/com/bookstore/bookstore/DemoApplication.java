@@ -23,30 +23,30 @@ import com.bookstore.utility.SecurityUtility;
 @ComponentScan("com.bookstore.utility")
 @EntityScan("com.bookstore.domain")
 @EnableJpaRepositories("com.bookstore.repository")
-public class DemoApplication {
+public class DemoApplication implements CommandLineRunner {
 
-	// @Autowired
-	// private UserService userService;
+	@Autowired
+	private UserService userService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	// @Override
-	// public void run(String... args) throws Exception {
-	// User user1 = new User();
-	// user1.setFirstName("John");
-	// user1.setLastName("Dow");
-	// user1.setUsername("Jon");
-	// user1.setPassword(SecurityUtility.passwordEncoder().encode("p"));
-	// user1.setEmail("JDow@gmail.com");
-	// Set<UserRole> userRoles = new HashSet<>();
-	// Role role1 = new Role();
-	// role1.setRoleId(1);
-	// role1.setName("ROLE_USER");
-	// userRoles.add(new UserRole(user1, role1));
+	@Override
+	public void run(String... args) throws Exception {
+		User user1 = new User();
+		user1.setFirstName("John");
+		user1.setLastName("Dow");
+		user1.setUsername("Jon");
+		user1.setPassword(SecurityUtility.passwordEncoder().encode("p"));
+		user1.setEmail("JDow@gmail.com");
+		Set<UserRole> userRoles = new HashSet<>();
+		Role role1 = new Role();
+		role1.setRoleId(1);
+		role1.setName("ROLE_USER");
+		userRoles.add(new UserRole(user1, role1));
 
-	// userService.createUser(user1, userRoles);
-	// }
+		userService.createUser(user1, userRoles);
+	}
 
 }
