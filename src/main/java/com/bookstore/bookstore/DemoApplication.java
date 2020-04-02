@@ -24,6 +24,7 @@ import com.bookstore.utility.SecurityUtility;
 @ComponentScan("com.bookstore.controller")
 @ComponentScan("com.bookstore.service")
 @ComponentScan("com.bookstore.utility")
+@ComponentScan("com.bookstore")
 @EntityScan("com.bookstore.domain")
 @EnableJpaRepositories("com.bookstore.repository")
 public class DemoApplication implements CommandLineRunner {
