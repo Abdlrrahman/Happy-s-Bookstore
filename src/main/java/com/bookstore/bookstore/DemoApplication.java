@@ -3,6 +3,7 @@ package com.bookstore.bookstore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
@@ -18,6 +19,8 @@ import com.bookstore.service.UserService;
 import com.bookstore.utility.SecurityUtility;
 
 @SpringBootApplication
+@EnableAutoConfiguration(exclude = {
+		org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class })
 @ComponentScan("com.bookstore.controller")
 @ComponentScan("com.bookstore.service")
 @ComponentScan("com.bookstore.utility")
