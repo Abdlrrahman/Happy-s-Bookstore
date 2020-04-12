@@ -24,12 +24,12 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        <a class="nav-link dropdown-toggle" th:href="@{/bookshelf}" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Books
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Browse the bookshelf</a>
+                            <a class="dropdown-item" th:href="@{/bookshelf}">Browse the bookshelf</a>
                             <a class="dropdown-item" href="#">Editor's choice</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">FAQ</a>
