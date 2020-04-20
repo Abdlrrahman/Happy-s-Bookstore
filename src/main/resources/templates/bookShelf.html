@@ -31,6 +31,7 @@
                        <tr class="book-item" data-th-each="book : ${bookList}">
                         <td>
                             <div th:if="${book != null}">
+                                <div class="row">
                                 <div class="col-3">
                                     <a th:href="@{/bookDetail?id=}+${book.id}"><img class="img-fluid shelf-book" th:src="#{adminPath}+@{/image/book/}+${book.id}+'.png'"/></a>
                                 </div>
@@ -49,6 +50,7 @@
 									
 									<p th:utext="${#strings.abbreviate(book.description, 500)}"></p>
                                 </div>
+                            </div>
 
                             </div>
                         </td>
