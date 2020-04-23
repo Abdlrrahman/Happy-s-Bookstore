@@ -28,6 +28,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 
 import com.bookstore.domain.Book;
 import com.bookstore.domain.User;
+import com.bookstore.domain.UserShipping;
 import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
@@ -127,12 +128,12 @@ public class HomeController {
 	public String myProfile(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("user", user);
-		// model.addAttribute("userPaymentlist", user.getUserPaymentList());
-		// model.addAttribute("userShippinglist", user.getUserShippinglist());
-		// model.addAttribute("orderList", user.getOrderlist());
+		model.addAttribute("userPaymentlist", user.getUserPaymentList());
+		model.addAttribute("userShippinglist", user.getUserShippinglist());
+		model.addAttribute("orderList", user.getOrderlist());
 
-		// UserShipping userShipping = new UserShipping();
-		// model.addAttribute("userShipping", userShipping);
+		UserShipping userShipping = new UserShipping();
+		model.addAttribute("userShipping", userShipping);
 
 		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("listOfShippingAddresses", true);
