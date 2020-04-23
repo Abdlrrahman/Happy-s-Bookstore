@@ -161,6 +161,21 @@ public class HomeController {
 		return "myProfile";
 	}
 
+	@RequestMapping("/listOfShippingAddresses")
+	public String listOfShippingAddresses(Model model, Principal principal, HttpServletRequest request) {
+		User user = userService.findByUsername(principal.getName());
+		model.addAttribute("user", user);
+		model.addAttribute("userPaymentList", user.getUserPaymentList());
+		model.addAttribute("userShippingList", user.getUserShippingList());
+		/* model.addAttribute("orderList", user.orderList()); */
+
+		model.addAttribute("listOfCreditcards", true);
+		model.addAttribute("classActiveBilling", true);
+		model.addAttribute("listOfShippingAddresses", true);
+
+		return "myProfile";
+	}
+
 	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
 	public String newUserPost(HttpServletRequest request, @ModelAttribute("email") String userEmail,
 			@ModelAttribute("username") String username, Model model) throws Exception {
