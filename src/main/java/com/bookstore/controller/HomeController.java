@@ -129,8 +129,8 @@ public class HomeController {
 		User user = userService.findByUsername(principal.getName());
 		model.addAttribute("user", user);
 		model.addAttribute("userPaymentlist", user.getUserPaymentList());
-		model.addAttribute("userShippinglist", user.getUserShippinglist());
-		model.addAttribute("orderList", user.getOrderlist());
+		model.addAttribute("userShippinglist", user.getUserShippingList());
+		// model.addAttribute("orderList", user.getOrderlist());
 
 		UserShipping userShipping = new UserShipping();
 		model.addAttribute("userShipping", userShipping);
@@ -142,6 +142,21 @@ public class HomeController {
 		Collections.sort(stateList);
 		model.addAttribute("stateList", stateList);
 		model.addAttribute("classActiveEdit", true);
+
+		return "myProfile";
+	}
+
+	@RequestMapping("/listOfCreditCards")
+	public String listOfCreditCards(Model model, Principal principal, HttpServletRequest request) {
+		User user = userService.findByUsername(principal.getName());
+		model.addAttribute("user", user);
+		model.addAttribute("userPaymentList", user.getUserPaymentList());
+		model.addAttribute("userShippingList", user.getUserShippingList());
+		/* model.addAttribute("orderList", user.orderList()); */
+
+		model.addAttribute("listOfCreditcards", true);
+		model.addAttribute("classActiveBilling", true);
+		model.addAttribute("listOfShippingAddresses", true);
 
 		return "myProfile";
 	}

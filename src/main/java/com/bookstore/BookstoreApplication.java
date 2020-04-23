@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -16,6 +17,7 @@ import com.bookstore.service.UserService;
 import com.bookstore.utility.SecurityUtility;
 
 @SpringBootApplication
+@EnableJpaRepositories
 @EnableAutoConfiguration(exclude = {
 		org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class })
 public class BookstoreApplication implements CommandLineRunner {
