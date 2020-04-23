@@ -151,7 +151,7 @@ th:classappend="${classActiveEdit}? 'in active'">
                                             <th>Operations</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <!-- <tbody>
                                         <tr th:each="userPayment : ${userPaymentlist}">
                                         <td>
                                             <input type="radio" name="defaultUserPaymentId" th:value="${userPayment.id}" th:checked="${userPayment.defaultPayment}" />
@@ -162,7 +162,7 @@ th:classappend="${classActiveEdit}? 'in active'">
                                             <a th:href="@{/removeCreditCard(id=${userPayment.id})}"><i class="fa fa-times"></i></a>
                                         </td>
                                         </tr>
-                                    </tbody>
+                                    </tbody> -->
                                 </table>
                                 <button class="btn btn-primary" type="submit">Save</button>
                             </form>
