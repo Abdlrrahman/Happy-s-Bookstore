@@ -156,7 +156,7 @@ public class HomeController {
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		/* model.addAttribute("orderList", user.orderList()); */
 
-		model.addAttribute("listOfCreditcards", true);
+		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("classActiveBilling", true);
 		model.addAttribute("listOfShippingAddresses", true);
 
@@ -171,7 +171,7 @@ public class HomeController {
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		/* model.addAttribute("orderList", user.orderList()); */
 
-		model.addAttribute("listOfCreditcards", true);
+		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("classActiveBilling", true);
 		model.addAttribute("listOfShippingAddresses", true);
 
@@ -184,6 +184,7 @@ public class HomeController {
 		model.addAttribute("user", user);
 
 		model.addAttribute("addNewCreditCard", true);
+		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("classActiveBilling", true);
 		model.addAttribute("listOfShippingAddresses", true);
 
