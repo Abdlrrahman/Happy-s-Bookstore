@@ -172,7 +172,7 @@
 											<div class="bg-info" th:if="${updateUserPaymentInfo}">User
 												info updated.</div>
 
-											<input hidden="hidden" name="id" th:value="${userPayment.id}">
+											<input hidden="hidden" name="id" th:value="${userPayment.id}" />
 
 											<div class="form-group">
 												<h5>* Give a name for your card:</h5>
@@ -224,7 +224,7 @@
 															<option value="" disabled="disabled">Please
 																select an option</option>
 															<option th:each="state : ${stateList}" th:text="${state}"
-																th:selected="(${userBilling.userBilingState}==${state})"></option>
+																th:selected="(${userBilling.userBillingState}==${state})"></option>
 														</select>
 													</div>
 												</div>
@@ -250,10 +250,10 @@
 													<div class="form-group">
 														<label for="cardType">* Select Card Type:</label>
 														<select class="col-form-label" id="cardType" th:name="type" th:value="${userPayment.type}">
-															<option value="visa">Visa<option>
-															<option value="mastercard">Mastercard<option>
-															<option value="discover">Discover<option>
-															<option value="amex">American Express<option>
+															<option value="visa">Visa</option>
+															<option value="mastercard">Mastercard</option>
+															<option value="discover">Discover</option>
+															<option value="amex">American Express</option>
 														</select>
 													</div>
 													<div class="form-group">
