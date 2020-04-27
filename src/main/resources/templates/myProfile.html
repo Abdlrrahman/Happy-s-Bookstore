@@ -150,8 +150,8 @@
                                             <th>Operations</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tbody>
-                                        <tr th:each="userPayment : ${userPaymentlist}">
+                                    <tbody>
+                                        <tr th:each="userPayment : ${userPaymentList}">
                                         <td>
                                             <input type="radio" name="defaultUserPaymentId" th:value="${userPayment.id}" th:checked="${userPayment.defaultPayment}" />
                                         </td>
@@ -161,7 +161,7 @@
                                             <a th:href="@{/removeCreditCard(id=${userPayment.id})}"><i class="fa fa-times"></i></a>
                                         </td>
                                         </tr>
-                                    </tbody> -->
+                                    </tbody>
                                 </table>
                                 <button class="btn btn-primary" type="submit">Save</button>
                             </form>

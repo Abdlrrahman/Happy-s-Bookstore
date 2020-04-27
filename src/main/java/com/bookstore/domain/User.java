@@ -2,7 +2,6 @@ package com.bookstore.domain;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -42,11 +41,11 @@ public class User implements UserDetails {
     private String phone;
     private boolean enabled = true;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<UserShipping> userShippingList;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserShipping> userShippingList;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<UserPayment> userPaymentList;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<UserPayment> userPaymentList;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
@@ -120,19 +119,19 @@ public class User implements UserDetails {
         this.userRoles = userRoles;
     }
 
-    public List<UserShipping> getUserShippingList() {
+    public Set<UserShipping> getUserShippingList() {
         return this.userShippingList;
     }
 
-    public void setUserShippingList(List<UserShipping> userShippingList) {
+    public void setUserShippingList(Set<UserShipping> userShippingList) {
         this.userShippingList = userShippingList;
     }
 
-    public List<UserPayment> getUserPaymentList() {
+    public Set<UserPayment> getUserPaymentList() {
         return this.userPaymentList;
     }
 
-    public void setUserPaymentList(List<UserPayment> userPaymentList) {
+    public void setUserPaymentList(Set<UserPayment> userPaymentList) {
         this.userPaymentList = userPaymentList;
     }
 
