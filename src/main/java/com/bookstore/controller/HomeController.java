@@ -35,6 +35,7 @@ import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.service.BookService;
+import com.bookstore.service.UserPaymentService;
 import com.bookstore.service.UserService;
 import com.bookstore.service.impl.UserSecurityService;
 import com.bookstore.utility.MailConstructor;
@@ -49,6 +50,10 @@ public class HomeController {
 
 	@Autowired
 	private MailConstructor mailConstructor;
+
+	@Autowired
+	private UserPaymentService userPaymentService;
+
 	@Autowired
 	private BookService bookService;
 
@@ -220,10 +225,31 @@ public class HomeController {
 	}
 
 	@RequestMapping("/updateCreditCard")
-	public String updateCreditCard(@ModelAttribute("id") Long creditCartId, Model model, Principal principal) {
+	public String updateCreditCard(@ModelAttribute("id") Long creditCardId, Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
-		UserPayment userPayment = userPaymentService.findById(creditCartId);
-		return null;
+		UserPayment userPayment = userPaymentService.findById(creditCardId);
+
+		if (user.getId() != userPayment.getUser().getId()) {
+			return "badRequestPage";
+		} else {
+			model.addAttribute("user", user);
+			UserBilling userBilling = userPayment.getUserBilling();
+			model.addAttribute("userPayment", userPayment);
+			model.addAttribute("userBilling", userBilling);
+
+			List<String> stateList = USConstants.listOfUSStatesCode;
+			Collections.sort(stateList);
+			model.addAttribute("stateList", stateList);
+
+			model.addAttribute("addNewCreditCard", true);
+			model.addAttribute("classActiveBilling", true);
+			model.addAttribute("listOfShippingAddresses", true);
+
+			model.addAttribute("userPaymentList", user.getUserPaymentList());
+			model.addAttribute("userShippingList", user.getUserShippingList());
+
+			return "myProfile";
+		}
 
 	}
 
