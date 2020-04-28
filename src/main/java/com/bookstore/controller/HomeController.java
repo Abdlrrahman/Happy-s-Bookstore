@@ -219,6 +219,14 @@ public class HomeController {
 		return "myProfile";
 	}
 
+	@RequestMapping("/updateCreditCard")
+	public String updateCreditCard(@ModelAttribute("id") Long creditCartId, Model model, Principal principal) {
+		User user = userService.findByUsername(principal.getName());
+		UserPayment userPayment = userPaymentService.findById(creditCartId);
+		return null;
+
+	}
+
 	@RequestMapping("/addNewShippingAddress")
 	public String addNewShippingAddress(Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
