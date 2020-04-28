@@ -1,5 +1,5 @@
 package com.bookstore.service;
 
-public interface userPaymentService {
+public interface UserPaymentService {
 
 }
