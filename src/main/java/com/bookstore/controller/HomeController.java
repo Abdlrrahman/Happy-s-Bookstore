@@ -290,7 +290,7 @@ public class HomeController {
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 
-		return "myProfile";
+		return "redirect:/listOfCreditCards";
 	}
 
 	@RequestMapping("/addNewShippingAddress")

@@ -91,7 +91,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void setUserDefaultPayment(Long defaultPaymentId, User user) {
+    public void setUserDefaultPayment(Long userPaymentId, User user) {
         List<UserPayment> userPaymentList = (List<UserPayment>) userPaymentRepository.findAll();
 
         for (UserPayment userPayment : userPaymentList) {
