@@ -26,6 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserPaymentRepository userPaymentRepository;
 
     @Autowired
     private RoleRepository roleRepository;
@@ -90,8 +92,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void setUserDefaultPayment(Long defaultPaymentId, User user) {
-        List<UserPayment> userPaymentList = (List<UserPayment>) UserPaymentRepository.findAll();
+        List<UserPayment> userPaymentList = (List<UserPayment>) userPaymentRepository.findAll();
 
+        for (UserPayment userPayment : userPaymentList) {
+            if (userPayment.getId() == userPaymentId) {
+                userPayment.setDefaultPayment(true);
+                userPaymentRepository.save(userPayment);
+            } else {
+                userPayment.setDefaultPayment(false);
+                userPaymentRepository.save(userPayment);
+            }
+        }
     }
 
 }
