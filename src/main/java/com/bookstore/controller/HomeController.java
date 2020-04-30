@@ -256,6 +256,23 @@ public class HomeController {
 
 	}
 
+	@RequestMapping(value = "/setDefaultShippingAddress", method = RequestMethod.POST)
+	public String setDefaultShippingAddress(@ModelAttribute("defaultShippingAddresstId") Long defaultShippingId,
+			Model model, Principal principal) {
+		User user = userService.findByUsername(principal.getName());
+		userService.setUserDefaultShipping(defaultShippingId, user);
+
+		model.addAttribute("user", user);
+		model.addAttribute("listOfCreditCards", true);
+		model.addAttribute("classActiveBilling", true);
+		model.addAttribute("listOfShippingAddresses", true);
+
+		model.addAttribute("userPaymentList", user.getUserPaymentList());
+		model.addAttribute("userShippingList", user.getUserShippingList());
+
+		return "redirect:/listOfCreditCards";
+	}
+
 	@RequestMapping(value = "/addNewCreditCard", method = RequestMethod.POST)
 	public String addNewCreditCard(@ModelAttribute("userPayment") UserPayment userPayment,
 			@ModelAttribute("userBilling") UserBilling userBilling, Principal principal, Model model) {
