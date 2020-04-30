@@ -264,7 +264,7 @@ public class HomeController {
 
 		model.addAttribute("user", user);
 		model.addAttribute("listOfCreditCards", true);
-		model.addAttribute("classActiveBilling", true);
+		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfShippingAddresses", true);
 
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
