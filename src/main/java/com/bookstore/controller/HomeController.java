@@ -336,7 +336,7 @@ public class HomeController {
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
 
-			return "redirect:/listOfCreditCards";
+			return "redirect:/myProfile";
 		}
 
 	}
@@ -379,6 +379,29 @@ public class HomeController {
 		/* model.addAttribute("orderList", user.orderList()); */
 
 		return "myProfile";
+	}
+
+	@RequestMapping("/removeUserShipping")
+	public String removeUserShipping(@ModelAttribute("id") Long userShippingId, Model model, Principal principal) {
+		User user = userService.findByUsername(principal.getName());
+		UserShipping userShipping = userShippingService.findById(userShippingId);
+
+		if (user.getId() != userShipping.getUser().getId()) {
+			return "badRequestPage";
+		} else {
+			model.addAttribute("user", user);
+
+			userShippingService.removeById(userShippingId);
+
+			model.addAttribute("listOfShippingAddresses", true);
+			model.addAttribute("classActiveShipping", true);
+
+			model.addAttribute("userPaymentList", user.getUserPaymentList());
+			model.addAttribute("userShippingList", user.getUserShippingList());
+
+			return "redirect:/myProfile";
+		}
+
 	}
 
 	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
