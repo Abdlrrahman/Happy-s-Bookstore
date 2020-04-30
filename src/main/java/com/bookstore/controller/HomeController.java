@@ -177,7 +177,7 @@ public class HomeController {
 		/* model.addAttribute("orderList", user.orderList()); */
 
 		model.addAttribute("listOfCreditCards", true);
-		model.addAttribute("classActiveBilling", true);
+		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfShippingAddresses", true);
 
 		return "myProfile";
@@ -221,7 +221,7 @@ public class HomeController {
 		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfCreditCards", true);
 
-		return "myProfile";
+		return "redirect:/listOfShippingAddresses";
 	}
 
 	@RequestMapping(value = "/addNewCreditCard", method = RequestMethod.POST)
@@ -316,6 +316,7 @@ public class HomeController {
 
 		model.addAttribute("addNewShippingAddress", true);
 		model.addAttribute("classActiveShipping", true);
+		model.addAttribute("listOfCreditCards", true);
 
 		UserShipping userShipping = new UserShipping();
 
