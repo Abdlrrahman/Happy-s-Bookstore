@@ -18,4 +18,9 @@ public class UserShippingServiceImpl implements UserShippingService {
         return userShippingRepository.findById(id).orElse(null);
     }
 
+    @Override
+    public void removeById(Long id) {
+        userShippingRepository.deleteById(id);
+    }
+
 }
