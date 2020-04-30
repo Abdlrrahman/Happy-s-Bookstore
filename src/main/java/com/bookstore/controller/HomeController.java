@@ -209,7 +209,7 @@ public class HomeController {
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		/* model.addAttribute("orderList", user.orderList()); */
 
-		return "myProfile";
+		return "redirect:/listOfCreditCards";
 	}
 
 	@RequestMapping(value = "/addNewShippingAddress", method = RequestMethod.POST)
@@ -251,13 +251,13 @@ public class HomeController {
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
 
-			return "redirect:/listOfShippingAddresses";
+			return "myProfile";
 		}
 
 	}
 
 	@RequestMapping(value = "/setDefaultShippingAddress", method = RequestMethod.POST)
-	public String setDefaultShippingAddress(@ModelAttribute("defaultShippingAddresstId") Long defaultShippingId,
+	public String setDefaultShippingAddress(@ModelAttribute("defaultShippingAddressId") Long defaultShippingId,
 			Model model, Principal principal) {
 		User user = userService.findByUsername(principal.getName());
 		userService.setUserDefaultShipping(defaultShippingId, user);
@@ -270,7 +270,7 @@ public class HomeController {
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
 
-		return "redirect:/listOfCreditCards";
+		return "redirect:/listOfShippingAddresses";
 	}
 
 	@RequestMapping(value = "/addNewCreditCard", method = RequestMethod.POST)
