@@ -11,6 +11,7 @@ import java.util.Set;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.domain.UserPayment;
+import com.bookstore.domain.UserShipping;
 import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.repository.PasswordResetTokenRepository;
@@ -103,6 +104,15 @@ public class UserServiceImpl implements UserService {
                 userPaymentRepository.save(userPayment);
             }
         }
+    }
+
+    @Override
+    public void updateUserShipping(UserShipping userShipping, User user) {
+        userShipping.setUser(user);
+        userShipping.setUserShippingDefault(true);
+        user.getUserShippingList().add(userShipping);
+        save(user);
+
     }
 
 }
