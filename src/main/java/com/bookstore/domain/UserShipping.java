@@ -20,6 +20,7 @@ public class UserShipping {
     private String userShippingState;
     private String userShippingCountry;
     private String userShippingZipcode;
+    private Boolean userShippingDefault;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -95,6 +96,18 @@ public class UserShipping {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Boolean isUserShippingDefault() {
+        return this.userShippingDefault;
+    }
+
+    public Boolean getUserShippingDefault() {
+        return this.userShippingDefault;
+    }
+
+    public void setUserShippingDefault(Boolean userShippingDefault) {
+        this.userShippingDefault = userShippingDefault;
     }
 
 }
