@@ -237,22 +237,21 @@ public class HomeController {
 			return "badRequestPage";
 		} else {
 			model.addAttribute("user", user);
-			UserBilling userBilling = userPayment.getUserBilling();
-			model.addAttribute("userPayment", userPayment);
-			model.addAttribute("userBilling", userBilling);
+
+			model.addAttribute("userShipping", userShipping);
 
 			List<String> stateList = USConstants.listOfUSStatesCode;
 			Collections.sort(stateList);
 			model.addAttribute("stateList", stateList);
 
 			model.addAttribute("listOfCreditCards", true);
-			model.addAttribute("classActiveBilling", true);
-			model.addAttribute("listOfShippingAddresses", true);
+			model.addAttribute("classActiveShipping", true);
+			model.addAttribute("addNewShippingAddress", true);
 
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
 
-			return "myProfile";
+			return "redirect:/listOfShippingAddresses";
 		}
 
 	}
