@@ -213,7 +213,7 @@ public class HomeController {
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
 
-			return "redirect:/myProfile";
+			return "redirect:/listOfShippingAddresses";
 		}
 
 	}
@@ -316,7 +316,7 @@ public class HomeController {
 		model.addAttribute("userShippingList", user.getUserShippingList());
 		/* model.addAttribute("orderList", user.orderList()); */
 
-		return "redirect:/listOfCreditCards";
+		return "myProfile";
 	}
 
 	@RequestMapping(value = "/addNewCreditCard", method = RequestMethod.POST)
@@ -332,7 +332,7 @@ public class HomeController {
 		model.addAttribute("classActiveBilling", true);
 		model.addAttribute("listOfShippingAddresses", true);
 
-		return "myProfile";
+		return "redirect:/listOfCreditCards";
 	}
 
 	@RequestMapping("/updateCreditCard")
@@ -382,7 +382,7 @@ public class HomeController {
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
 
-			return "redirect:/myProfile";
+			return "redirect:/listOfCreditCards";
 		}
 
 	}
