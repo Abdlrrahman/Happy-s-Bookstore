@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.bookstore.domain.ShoppingCart;
+import com.bookstore.repository.ShoppingCartRepository;
 import com.bookstore.service.CartItemService;
 import com.bookstore.service.ShoppingCartService;
 import com.bookstore.domain.CartItem;
@@ -19,7 +20,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     private ShoppingCartRepository shoppingCartRepository;
 
     @Override
-    public void updateShoppingCart(ShoppingCart shoppingCart) {
+    public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) {
         BigDecimal cartTotal = new BigDecimal(0);
 
         List<CartItem> cartItemList = cartItemService.findByShoppingCart(shoppingCart);
