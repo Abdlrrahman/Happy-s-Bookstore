@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.bookstore.domain.ShoppingCart;
 import com.bookstore.domain.User;
+import com.bookstore.service.CartItemService;
 import com.bookstore.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
