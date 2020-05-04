@@ -10,7 +10,9 @@ import com.bookstore.service.ShoppingCartService;
 import com.bookstore.domain.CartItem;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Autowired

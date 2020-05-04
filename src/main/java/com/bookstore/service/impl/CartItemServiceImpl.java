@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import com.bookstore.service.CartItemService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,6 +14,7 @@ import com.bookstore.domain.CartItem;
 import com.bookstore.domain.ShoppingCart;
 import com.bookstore.repository.CartItemRepository;
 
+@Service
 public class CartItemServiceImpl implements CartItemService {
 
     @Autowired
