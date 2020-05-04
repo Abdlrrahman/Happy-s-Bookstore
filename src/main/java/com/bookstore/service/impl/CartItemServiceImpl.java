@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.bookstore.domain.CartItem;
 import com.bookstore.domain.ShoppingCart;
+import com.bookstore.repository.CartItemRepository;
 
 public class CartItemServiceImpl implements CartItemService {
 
