@@ -3,17 +3,17 @@ package com.bookstore.controller;
 import java.security.Principal;
 import java.util.List;
 
+import com.bookstore.domain.CartItem;
 import com.bookstore.domain.ShoppingCart;
 import com.bookstore.domain.User;
 import com.bookstore.service.CartItemService;
+import com.bookstore.service.ShoppingCartService;
 import com.bookstore.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/shoppongCart")
@@ -24,6 +24,9 @@ public class ShoppingCartController {
 
     @Autowired
     private CartItemService cartItemService;
+
+    @Autowired
+    private ShoppingCartService shoppingCartService;
 
     @RequestMapping("/cart")
     public String shoppingCart(Model model, Principal principal) {
