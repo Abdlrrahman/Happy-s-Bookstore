@@ -58,13 +58,12 @@
 					<br />	
 
 					<!--**************** display products in cart ****************-->
-					<div class="row" th:each="cartItem : ${cartItemList}">
-						<hr />
+						<div th:each="cartItem : ${cartItemList}">
 						<form th:action="@{/shoppingCart/updateCartItem}" method="post">
-							<hr />
+							<div class="row">
 							<div class="col-2">
 								<a th:href="@{bookDetail(id=${cartItem.book.id})}"> <img
-									class="img-fluid shelf-book"
+									class="img-fluid shelf-book img-thumbnail"
 									th:src="#{adminPath}+@{/image/book/}+
 								${cartItem.book.id}+'.png'" />
 								</a>
@@ -102,11 +101,14 @@
 									th:id="'update-item-'+${cartItem.id}" type="submit"
 									class="btn btn-warning btn-xs">Update</button>
 							</div>
+						</div>
 						</form>
 					</div>
+					<br />
+					<br />
 
 					<div class="row">
-						<hr />
+						<hr style="position: absolute; width:100%; height:2px; background-color:gray; margin-top:-10px;"/>
 						<h4 class="col-12 text-right">
 							<strong style="font-size: large;">Total Price (<span
 								th:text="${#lists.size(cartItemList)}"></span> items):
