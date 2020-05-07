@@ -3,4 +3,4 @@ An E-commerce Book Store website
 
 this is the ERD of the website
 
-![ERD BookStore](/ERD BookStore.png)
+![ERD BookStore](/ERD.png)
