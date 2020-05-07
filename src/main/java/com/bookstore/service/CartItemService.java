@@ -18,4 +18,6 @@ public interface CartItemService {
 
     CartItem addBookToCartItem(Book book, User user, int qty);
 
+    CartItem findById(Long id);
+
 }

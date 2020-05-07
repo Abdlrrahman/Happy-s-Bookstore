@@ -72,4 +72,9 @@ public class CartItemServiceImpl implements CartItemService {
         bookToCartItemRepository.save(bookToCartItem);
         return cartItem;
     }
+
+    @Override
+    public CartItem findById(Long id) {
+        return cartItemRepository.findById(id).orElse(null);
+    }
 }

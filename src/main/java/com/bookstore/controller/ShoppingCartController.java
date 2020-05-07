@@ -66,4 +66,13 @@ public class ShoppingCartController {
         return "forward:/bookDetail?id=" + book.getId();
     }
 
+    @RequestMapping("/updateCartItem")
+    public String updateShoppingCart(@ModelAttribute("id") Long cartItemId, @ModelAttribute("qty") int qty) {
+        CartItem cartItem = cartItemService.findById(cartItemId);
+        cartItem.setQty(qty);
+        cartItemService.updateCartItem(cartItem);
+
+        return "forward:/shoppingCart/cart";
+    }
+
 }
