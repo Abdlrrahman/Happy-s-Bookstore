@@ -187,7 +187,40 @@
                                                 </td>      
                                             </tr>
                                         </tbody>
-                                    </table>                    
+                                    </table>    
+                                     <!-- Credit Card Information -->   
+                                     <div class="row">
+                                         <div class="col-12">
+                                            <img th:src="@{/image/creditcard.png}" class="img-fluid" /><br />
+											<div class="card-group">
+												<label for="cardType">* Select Card Type: </label> <select
+													class="form-control" id="cardType" name="type"
+													th:value="${payment.type}">
+													<option value="visa">Visa</option>
+													<option value="mastercard">Mastercard</option>
+													<option value="discover">Discover</option>
+													<option value="amex">American Express</option>
+												</select>
+											</div>
+
+											<div class="card-group">
+												<label for="cardHolder">* Card Holder Name:</label> <input
+													type="text" class="form-control" id="cardHolder"
+													required="required" placeHolder="Card Holder Name"
+													th:name="holderName" th:value="${userPayment.holderName}" />
+											</div>
+											<div class="card-group">
+												<label for="cardNumber">* Card Number:</label>
+												<div class="input-group">
+													<input type="tel" class="form-control" id="cardNumber"
+														required="required" placeHolder="Valid Card Number"
+														th:name="cardNumber" th:value="${userPayment.cardNumber}" />
+													<span class="input-group-append"><i
+														class="fa fa-credit-card" aria-hidden="true"></i></span>
+												</div>
+											</div>
+                                         </div>
+                                     </div>             
                           </div>
                       </div>
                   </div>
