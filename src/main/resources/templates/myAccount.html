@@ -23,11 +23,11 @@
         <div class="row justify-content-center" style="margin-top: 100px;">
             <div class="col-9 col-3">
 
-                <ul class="nav nav-tabs">
-                    <li class="nav-item" th:classappend="${classActiveNewAccount}? 'active'"><a class="nav-link"
+                <ul class="nav  nav-tabs">
+                    <li class="nav-item active" th:classappend="${classActiveNewAccount}? 'active'"><a class="nav-link"
                             href="#tab-1" data-toggle="tab"><span style="color:red;">Create new
                                 account</span></a></li>
-                    <li class="nav-item" th:classappend="${classActiveLogin}? 'active'"><a class="nav-link"
+                    <li class="nav-item" th:classappend="${classActiveLogin}? 'active'"><a class="nav-link active"
                             href="#tab-2" data-toggle="tab"><span style="color:red;">Log in</span></a>
                     </li>
                     <li class="nav-item" th:classappend="${classActiveForgotPassword}? 'active'"><a class="nav-link"
