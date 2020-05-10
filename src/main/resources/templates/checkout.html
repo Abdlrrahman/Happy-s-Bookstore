@@ -154,6 +154,43 @@
                         </div>
                     </div>
                 </div>
+                <!-- 2. Payment Information -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#paymentInfo">
+                                        2. Payment Information
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="paymentInfo" class="collapse" th:classappend="${classActivePayment} 'in'">
+                                <div class="card-body">
+                                    <table class="table" th:if="${not emptyPaymentList}">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    Available Credit Card
+                                                </th>
+                                                <th>
+                                                  Operations
+                                              </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr th:each="userPayment : ${userPaymentList}">
+                                                <td th:text="${userPayment.cardName}">
+                                                </td>
+                                                <td>
+                                                  <a th:href="${/setPaymentMethod(userPaymentId=${userPayment.id})}">
+                                                    use this payment
+                                                  </a>
+                                                </td>      
+                                            </tr>
+                                        </tbody>
+                                    </table>                    
+                          </div>
+                      </div>
+                  </div>
             </div>
         </div>
     </form>
