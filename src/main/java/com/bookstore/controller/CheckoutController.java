@@ -17,6 +17,7 @@ import com.bookstore.service.CartItemService;
 import com.bookstore.service.PaymentService;
 import com.bookstore.service.ShippingAddressService;
 import com.bookstore.service.UserService;
+import com.bookstore.service.UserShippingService;
 import com.bookstore.utility.USConstants;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,9 @@ public class CheckoutController {
 
     @Autowired
     private BillingAddressService billingAddressService;
+
+    @Autowired
+    private UserShippingService userShippingService;
 
     @RequestMapping("/checkout")
     public String checkout(@RequestParam("id") Long cartId,
@@ -104,7 +108,7 @@ public class CheckoutController {
         model.addAttribute("payment", payment);
         model.addAttribute("billingAddress", billingAddress);
         model.addAttribute("cartItemList", cartItemList);
-        model.addAttribute("shoppingCart", user.getShoppingCart());
+        model.addAttribute("shoppingCart", shoppingCart);
 
         List<String> stateList = USConstants.listOfUSStatesCode;
         Collections.sort(stateList);
@@ -117,5 +121,54 @@ public class CheckoutController {
         }
 
         return "checkout";
+    }
+
+    @RequestMapping("/setShippingAddress")
+    public String setShippingAddress(@RequestParam("userShippingId") Long userShippingId, Model model,
+            Principal principal) {
+        User user = userService.findByUsername(principal.getName());
+        UserShipping userShipping = userShippingService.findById(userShippingId);
+
+        if (userShipping.getUser().getId() != user.getId()) {
+            return "badRequestPage";
+        } else {
+            shippingAddressService.setByUserShipping(userShipping, shippingAddress);
+
+            List<CartItem> cartItemList = cartItemService.findByShoppingCart(user.getShoppingCart());
+
+            ShoppingCart shoppingCart = user.getShoppingCart();
+
+            model.addAttribute("shippingAddress", shippingAddress);
+            model.addAttribute("payment", payment);
+            model.addAttribute("billingAddress", billingAddress);
+            model.addAttribute("cartItemList", cartItemList);
+            model.addAttribute("shoppingCart", shoppingCart);
+
+            List<String> stateList = USConstants.listOfUSStatesCode;
+            Collections.sort(stateList);
+            model.addAttribute("stateList", stateList);
+
+            List<UserShipping> userShippingList = user.getUserShippingList();
+            List<UserPayment> userPaymentList = user.getUserPaymentList();
+
+            model.addAttribute("userShippingList", userShippingList);
+            model.addAttribute("userPaymentList", userPaymentList);
+
+            model.addAttribute("shippingAddress", shippingAddress);
+
+            model.addAttribute("classActiveShipping", true);
+
+            if (userPaymentList.size() == 0) {
+                model.addAttribute("emptyPaymentList", true);
+            } else {
+                model.addAttribute("emptyPaymentList", false);
+            }
+
+            model.addAttribute("emptyShippingList", false);
+
+            return "checkout";
+
+        }
+
     }
 }
