@@ -20,7 +20,7 @@
         </div>
         <img class="img-fluid" src="/image/wood.png" style="margin-top: 25px;" />
 
-        <div class="row" style="margin-top: 10px;">
+        <div class="container-fluid" style="margin-top: 10px;">
             <form th:action="@{/checkout}" method="post">
                 <div class="row">
                     <!-- Left card -->
@@ -38,6 +38,12 @@
                                     </div>
                                     <div class="col-5 text-right">
                                         $<span th:text="${shoppingCart.grandTotal}"></span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7 text-left">Estimated tax:</div>
+                                    <div class="col-5 text-right">
+                                        $<span th:with="tax=${shoppingCart.grandTotal*0.06}" th:text="${#numbers.formatDecimal(tax, 0 ,2)}"></span>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -67,12 +73,12 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">
-                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#shippingInfo" aria-expanded="false" aria-controls="shippingInfo">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#shippingInfo" role="button" aria-expanded="false" aria-controls="shippingInfo">
                                         1. Shipping Address
                                     </a>
                                 </h4>
                             </div>
-                            <div id="shippingInfo" class="collapse" data-parent="#accordion" th:classappend="${classActiveShipping}? 'in'">
+                            <div id="shippingInfo" class="collapse show" data-parent="#accordion" th:classappend="${classActiveShipping}? 'in'">
                               <div class="card-body">
                                   <table class="table" th:if="${not emptyShippingList}">
                                       <thead>
@@ -151,7 +157,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a data-toggele="collapse" data-parent="#accordion" class="btn btn-warning pull-right mt-3 mb-3" href="#paymentInfo">Next</a>
+                                    <a data-toggle="collapse" data-parent="#accordion" class="btn btn-warning pull-right mt-3 mb-3" href="#paymentInfo">Next</a>
                         </div>
                     </div>
                 </div>
@@ -159,12 +165,12 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#paymentInfo">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#paymentInfo"  role="button" aria-expanded="false" aria-controls="shippingInfo">
                                         2. Payment Information
                                     </a>
                                 </h4>
                             </div>
-                            <div id="paymentInfo" class="collapse show" th:classappend="${classActivePayment}? 'in'">
+                            <div id="paymentInfo" class="collapse" th:classappend="${classActivePayment}? 'in'">
                                 <div class="card-body">
                                     <table class="table" th:if="${not emptyPaymentList}">
                                         <thead>
@@ -301,7 +307,7 @@
                                             th:value="${billingAddress.billingAddressStreet1}" /> <input
                                             type="text" class="form-control" id="billingAddress"
                                             placeholder="Street Address 2" th:name="billingAddressStreet2"
-                                            th:value="${billingAddress.userBillingStreet2}" />
+                                            th:value="${billingAddress.billingAddressStreet2}" />
                                     </div>    
                                     <div class="row">
                                         <div class="col-4">
@@ -338,7 +344,7 @@
                                         </div>
                                     </div>
                                     
-                                    <a data-toggele="collapse" data-parent="#accordion"
+                                    <a data-toggle="collapse" data-parent="#accordion"
                                 class="btn btn-warning pull-right mt-3 mb-3" href="#reviewItems">Next</a>   
                             </div>
                         </div>
@@ -348,11 +354,10 @@
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">
-									<a data-toggle="collapse" data-parent="#accordion"
-										href="#reviewItems"> 3. Review Items and Shipping </a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#reviewItems"  role="button" aria-expanded="false" aria-controls="shippingInfo"> 3. Review Items and Shipping </a>
 								</h4>
 							</div>
-							<div id="reviewItems" class="collapse">
+							<div id="reviewItems" class="collapse" data-parent="#accordion" >
 								<div class="card-body">
 									<h4>Choose your shipping method:</h4>
 									<div class="radio">
@@ -421,7 +426,7 @@
 									</div>
 
 									<hr />
-									<hr />
+									
 									<h4 class="col-12 text-right">
 										<strong style="font-size: large;">Order Total (<span
 											th:text="${#lists.size(cartItemList)}"></span> items):
