@@ -60,18 +60,19 @@
                     <div th:if="${missingRequiredField}">
                         <h5 class="alert alert-warning"> there are some fields missing. field with * is requierd</h5>
                     </div>
+
                     <div id="accordion">
 
                         <!-- 1. Shipping Address -->
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#shippingInfo">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#shippingInfo" aria-expanded="false" aria-controls="shippingInfo">
                                         1. Shipping Address
                                     </a>
                                 </h4>
                             </div>
-                            <div id="shippingInfo" class="collapse" th:classappend="${classActiveShipping}? 'in'">
+                            <div id="shippingInfo" class="collapse" data-parent="#accordion" th:classappend="${classActiveShipping}? 'in'">
                               <div class="card-body">
                                   <table class="table" th:if="${not emptyShippingList}">
                                       <thead>
@@ -150,7 +151,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <a data-toggele="collapse" data-parent="#accordion" class="btn btn-warning pull-right" href="#paymentInfo">Next</a>
+                                    <a data-toggele="collapse" data-parent="#accordion" class="btn btn-warning pull-right mt-3 mb-3" href="#paymentInfo">Next</a>
                         </div>
                     </div>
                 </div>
@@ -158,12 +159,12 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">
-                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#paymentInfo">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#paymentInfo">
                                         2. Payment Information
                                     </a>
                                 </h4>
                             </div>
-                            <div id="paymentInfo" class="collapse" th:classappend="${classActivePayment}? 'in'">
+                            <div id="paymentInfo" class="collapse show" th:classappend="${classActivePayment}? 'in'">
                                 <div class="card-body">
                                     <table class="table" th:if="${not emptyPaymentList}">
                                         <thead>
@@ -221,11 +222,13 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <br />
                                         
                                         <div class="row">
                                                     <div class="col-7">
                                                         <div class="card-group">
                                                             <label>* Expiration Date</label>
+                                                            &nbsp;&nbsp;
                                                             <div class="row">
                                                                 <div class="col-6">
                                                                     <select class="form-control" name="expiryMonth"
@@ -336,7 +339,7 @@
                                     </div>
                                     
                                     <a data-toggele="collapse" data-parent="#accordion"
-                                class="btn btn-warning pull-right" href="#reviewItems">Next</a>   
+                                class="btn btn-warning pull-right mt-3 mb-3" href="#reviewItems">Next</a>   
                             </div>
                         </div>
                     </div>
@@ -345,7 +348,7 @@
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">
-									<a class="collapsed" data-toggle="collapse" data-parent="#accordion"
+									<a data-toggle="collapse" data-parent="#accordion"
 										href="#reviewItems"> 3. Review Items and Shipping </a>
 								</h4>
 							</div>
