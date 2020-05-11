@@ -22,7 +22,7 @@ public class MailConstructor {
                 + password;
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(user.getEmail());
-        email.setSubject("Happy Bookstore - New User");
+        email.setSubject("Happy's Bookstore - New User");
         email.setText(url + message);
         email.setFrom(env.getProperty("support.email"));
         return email;

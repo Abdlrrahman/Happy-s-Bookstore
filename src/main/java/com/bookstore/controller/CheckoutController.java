@@ -11,6 +11,7 @@ import com.bookstore.domain.ShoppingCart;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserPayment;
 import com.bookstore.domain.UserShipping;
+import com.bookstore.service.BillingAddressService;
 import com.bookstore.service.CartItemService;
 import com.bookstore.service.PaymentService;
 import com.bookstore.service.ShippingAddressService;
@@ -40,6 +41,9 @@ public class CheckoutController {
 
     @Autowired
     private PaymentService paymentService;
+
+    @Autowired
+    private BillingAddressService billingAddressService;
 
     @RequestMapping("/checkout")
     public String checkout(@RequestParam("id") Long cartId,
@@ -94,5 +98,6 @@ public class CheckoutController {
                 billingAddressService.setByUserBilling(userPayment.getUserBilling(), billingAddress);
             }
         }
+        return null;
     }
 }
