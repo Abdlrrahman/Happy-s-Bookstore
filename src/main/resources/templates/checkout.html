@@ -20,34 +20,34 @@
         </div>
         <img class="img-fluid" src="/image/wood.png" style="margin-top: 25px;" />
 
-        <div class="row justify-content-center" style="margin-top: 10px;">
+        <div class="row" style="margin-top: 10px;">
             <form th:action="@{/checkout}" method="post">
-
-                <!-- Left card -->
-                <div class="col-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <button type="submit" class="btn btn-warning btn-block">Place your order</button>
-                            <p style="font-size:smaller;">By placing your order, you agree to Happy's Bookstore
-                                <a href="#">privacy</a> notice and <a href="#">conditions</a> of use.</p>
-                            <hr />
-                            <h3>Order Summary</h3>
-                            <div class="row">
-                                <div class="col-7 text-left">
-                                    Total before tax:
+                <div class="row">
+                    <!-- Left card -->
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <button type="submit" class="btn btn-warning btn-block">Place your order</button>
+                                <p style="font-size:smaller;">By placing your order, you agree to Happy's Bookstore
+                                    <a href="#">privacy</a> notice and <a href="#">conditions</a> of use.</p>
+                                <hr />
+                                <h3>Order Summary</h3>
+                                <div class="row">
+                                    <div class="col-7 text-left">
+                                        Total before tax:
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        $<span th:text="${shoppingCart.grandTotal}"></span>
+                                    </div>
                                 </div>
-                                <div class="col-5 text-right">
-                                    $<span th:text="${shoppingCart.grandTotal}"></span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-7 text-left">
-                                    <h3 style="color:darkred;"><strong>Order Total: </strong></h3>
-                                </div>
-                                <div class="col-5 text-right">
-                                    <h3><strong style="color:darkred;">$<span
-                                                th:with="total=${shoppingCart.grandTotal+shoppingCart.grandTotal*0.06}"
-                                                th:text="${#numbers.formatDecimal(total, 0 ,2)}"></span></strong></h3>
+                                <div class="row">
+                                    <div class="col-7 text-left">
+                                        <h3 style="color:darkred;"><strong>Order Total: </strong></h3>
+                                    </div>
+                                    <div class="col-5 text-right">
+                                        <h3><strong style="color:darkred;">$<span
+                                                    th:with="total=${shoppingCart.grandTotal+shoppingCart.grandTotal*0.06}"
+                                                    th:text="${#numbers.formatDecimal(total, 0 ,2)}"></span></strong></h3>
 								</div>
 							</div>
 							<div class="card-footer">Shipping and handling haven't applied.</div>
@@ -57,21 +57,21 @@
 				
 				<!-- Checkout Info -->
 				<div class="col-8">
-                    <div th:if=${missingRequiredField}>
+                    <div th:if="${missingRequiredField}">
                         <h5 class="alert alert-warning"> there are some fields missing. field with * is requierd</h5>
                     </div>
-                    <div class="card-group" id="accordion">
+                    <div id="accordion">
 
                         <!-- 1. Shipping Address -->
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#shippingInfo">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#shippingInfo">
                                         1. Shipping Address
                                     </a>
                                 </h4>
                             </div>
-                            <div id="shippingInfo" class="collapse" th:classappend="${classActiveShipping} 'in'">
+                            <div id="shippingInfo" class="collapse" th:classappend="${classActiveShipping}? 'in'">
                               <div class="card-body">
                                   <table class="table" th:if="${not emptyShippingList}">
                                       <thead>
@@ -158,12 +158,12 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#paymentInfo">
+                                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#paymentInfo">
                                         2. Payment Information
                                     </a>
                                 </h4>
                             </div>
-                            <div id="paymentInfo" class="collapse" th:classappend="${classActivePayment} 'in'">
+                            <div id="paymentInfo" class="collapse" th:classappend="${classActivePayment}? 'in'">
                                 <div class="card-body">
                                     <table class="table" th:if="${not emptyPaymentList}">
                                         <thead>
@@ -207,14 +207,14 @@
 												<label for="cardHolder">* Card Holder Name:</label> <input
 													type="text" class="form-control" id="cardHolder"
 													required="required" placeHolder="Card Holder Name"
-													th:name="holderName" th:value="${userPayment.holderName}" />
+													th:name="holderName" th:value="${payment.holderName}" />
 											</div>
 											<div class="card-group">
 												<label for="cardNumber">* Card Number:</label>
 												<div class="input-group">
 													<input type="tel" class="form-control" id="cardNumber"
 														required="required" placeHolder="Valid Card Number"
-														th:name="cardNumber" th:value="${userPayment.cardNumber}" />
+														th:name="cardNumber" th:value="${payment.cardNumber}" />
 													<span class="input-group-append"><i
 														class="fa fa-credit-card" aria-hidden="true"></i></span>
                                                     </div>
@@ -230,7 +230,7 @@
                                                                 <div class="col-6">
                                                                     <select class="form-control" name="expiryMonth"
                                                                         required="required"
-                                                                        th:value="${userPayment.expiryMonth}">
+                                                                        th:value="${payment.expiryMonth}">
                                                                         <option disabled="disabled">-- Month --</option>
                                                                         <option value="01">Jan (01)</option>
                                                                         <option value="02">Feb (02)</option>
@@ -248,7 +248,7 @@
                                                                 </div>
                                                                 <div class="col-6">
                                                                     <select class="form-control" name="expiryYear"
-                                                                        th:value="${userPayment.expiryYear}">
+                                                                        th:value="${payment.expiryYear}">
                                                                         <option disabled="disabled">-- Year --</option>
 																	    <option value="2020">2020</option>
                                                                         <option value="2021">2021</option>
@@ -271,7 +271,7 @@
                                                             <label for="cardCVC">CV Code</label> <input id="cardCVC"
                                                                 type="tel" class="form-control" name="cvc"
                                                                 placeholder="CVC" th:name="cvc"
-                                                                th:value="${userPayment.cvc}" />
+                                                                th:value="${payment.cvc}" />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -337,12 +337,15 @@
                                     
                                     <a data-toggele="collapse" data-parent="#accordion"
                                 class="btn btn-warning pull-right" href="#reviewItems">Next</a>   
+                            </div>
+                        </div>
+                    </div>
 
                          <!-- 3. Review Items and Shipping -->
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">
-									<a data-toggle="collapse" data-parent="#accordion"
+									<a class="collapsed" data-toggle="collapse" data-parent="#accordion"
 										href="#reviewItems"> 3. Review Items and Shipping </a>
 								</h4>
 							</div>
@@ -435,8 +438,10 @@
 						</div>
 
 					</div>
-				</div>
-    </form>
+                </div>
+                
+            </div>
+        </form>
 </div>
 </div>
 <!-- end of container -->

@@ -1,6 +1,7 @@
 package com.bookstore.controller;
 
 import java.security.Principal;
+import java.util.Collections;
 import java.util.List;
 
 import com.bookstore.domain.BillingAddress;
@@ -16,6 +17,7 @@ import com.bookstore.service.CartItemService;
 import com.bookstore.service.PaymentService;
 import com.bookstore.service.ShippingAddressService;
 import com.bookstore.service.UserService;
+import com.bookstore.utility.USConstants;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,9 +81,9 @@ public class CheckoutController {
         }
 
         if (userShippingList.size() == 0) {
-            model.addAttribute("emptyShipingList", true);
+            model.addAttribute("emptyShippingList", true);
         } else {
-            model.addAttribute("emptyShipingList", false);
+            model.addAttribute("emptyShippingList", false);
         }
 
         ShoppingCart shoppingCart = user.getShoppingCart();
@@ -98,6 +100,22 @@ public class CheckoutController {
                 billingAddressService.setByUserBilling(userPayment.getUserBilling(), billingAddress);
             }
         }
-        return null;
+        model.addAttribute("shippingAddress", shippingAddress);
+        model.addAttribute("payment", payment);
+        model.addAttribute("billingAddress", billingAddress);
+        model.addAttribute("cartItemList", cartItemList);
+        model.addAttribute("shoppingCart", user.getShoppingCart());
+
+        List<String> stateList = USConstants.listOfUSStatesCode;
+        Collections.sort(stateList);
+        model.addAttribute("stateList", stateList);
+
+        model.addAttribute("classActiveShipping", true);
+
+        if (missingRequiredField) {
+            model.addAttribute("missingRequiredField", true);
+        }
+
+        return "checkout";
     }
 }
