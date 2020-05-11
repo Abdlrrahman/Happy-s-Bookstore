@@ -78,7 +78,7 @@
                                     </a>
                                 </h4>
                             </div>
-                            <div id="shippingInfo" class="collapse show" data-parent="#accordion" th:classappend="${classActiveShipping}? 'in'">
+                            <div id="shippingInfo" class="collapse" data-parent="#accordion" th:classappend="${classActiveShipping}? 'in'">
                               <div class="card-body">
                                   <table class="table" th:if="${not emptyShippingList}">
                                       <thead>
@@ -283,6 +283,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <br />
                                        <!-- Billing Address -->   
                                        <div class="checkbox">
                                         <label>
@@ -290,6 +291,7 @@
                                         name="billingSameAsShipping" value="true" /> The same as shipping address
                                         </label>
                                     </div>
+                                    <br />
                                     
                                     <div class="card-group">
                                         <label for="billingName">* Name</label> <input type="text"
