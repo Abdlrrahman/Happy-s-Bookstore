@@ -18,8 +18,10 @@ import com.bookstore.domain.UserPayment;
 import com.bookstore.domain.UserShipping;
 import com.bookstore.service.BillingAddressService;
 import com.bookstore.service.CartItemService;
+import com.bookstore.service.OrderService;
 import com.bookstore.service.PaymentService;
 import com.bookstore.service.ShippingAddressService;
+import com.bookstore.service.ShoppingCartService;
 import com.bookstore.service.UserPaymentService;
 import com.bookstore.service.UserService;
 import com.bookstore.service.UserShippingService;
@@ -64,6 +66,12 @@ public class CheckoutController {
 
     @Autowired
     private JavaMailSender mailSender;
+
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private ShoppingCartService shoppingCartService;
 
     @RequestMapping("/checkout")
     public String checkout(@RequestParam("id") Long cartId,
