@@ -25,6 +25,7 @@ import com.bookstore.service.ShoppingCartService;
 import com.bookstore.service.UserPaymentService;
 import com.bookstore.service.UserService;
 import com.bookstore.service.UserShippingService;
+import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.USConstants;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,6 +73,9 @@ public class CheckoutController {
 
     @Autowired
     private ShoppingCartService shoppingCartService;
+
+    @Autowired
+    private MailConstructor mailConstructor;
 
     @RequestMapping("/checkout")
     public String checkout(@RequestParam("id") Long cartId,
