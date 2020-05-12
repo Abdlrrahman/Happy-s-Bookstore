@@ -11,6 +11,7 @@ import com.bookstore.domain.Payment;
 import com.bookstore.domain.ShippingAddress;
 import com.bookstore.domain.ShoppingCart;
 import com.bookstore.domain.User;
+import com.bookstore.repository.OrderRepository;
 import com.bookstore.service.CartItemService;
 import com.bookstore.service.OrderService;
 
