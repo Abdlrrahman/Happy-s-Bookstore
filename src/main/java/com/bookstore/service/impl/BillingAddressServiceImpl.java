@@ -1,6 +1,7 @@
 package com.bookstore.service.impl;
 
 import com.bookstore.domain.BillingAddress;
+import com.bookstore.domain.ShippingAddress;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.service.BillingAddressService;
 
@@ -19,6 +20,20 @@ public class BillingAddressServiceImpl implements BillingAddressService {
         billingAddress.setBillingAddressState(userBilling.getUserBillingState());
         billingAddress.setBillingAddressCountry(userBilling.getUserBillingCountry());
         billingAddress.setBillingAddressZipcode(userBilling.getUserBillingZipcode());
+
+        return billingAddress;
+    }
+
+    @Override
+    public BillingAddress setByUserShippingAddress(ShippingAddress shippingAddress, BillingAddress billingAddress) {
+
+        billingAddress.setBillingAddressName(shippingAddress.getShippingAddressName());
+        billingAddress.setBillingAddressStreet1(shippingAddress.getShippingAddressStreet1());
+        billingAddress.setBillingAddressStreet2(shippingAddress.getShippingAddressStreet2());
+        billingAddress.setBillingAddressCity(shippingAddress.getShippingAddressCity());
+        billingAddress.setBillingAddressState(shippingAddress.getShippingAddressState());
+        billingAddress.setBillingAddressCountry(shippingAddress.getShippingAddressCountry());
+        billingAddress.setBillingAddressZipcode(shippingAddress.getShippingAddressZipcode());
 
         return billingAddress;
     }
