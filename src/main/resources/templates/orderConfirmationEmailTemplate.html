@@ -3,7 +3,7 @@
 
 <head>
     <link href="/css/bootstrap.min.css" rel="stylesheet" />
-    <link th:href="@{/css/fontawesome.min.css}" rel="stylesheet" />
+    <link href="/css/fontawesome.min.css" rel="stylesheet" />
     <link href="/css/style.css" rel="stylesheet" />
 
     <style>
@@ -37,7 +37,7 @@
             <td>
                 <span th:text="${order.billingAddress.billingAddressName}"></span><br />
                 <span
-                    th:text="${order.billingAddress.billingAddressStreet1}+' '+${order.billingAddres.billingAddressStreet2}"></span><br />
+                    th:text="${order.billingAddress.billingAddressStreet1}+' '+${order.billingAddress.billingAddressStreet2}"></span><br />
                 <span th:text="${order.billingAddress.billingAddressCity}"></span><br />
                 <span th:text="${order.billingAddress.billingAddressState}"></span><br />
                 <span th:text="${order.billingAddress.billingAddressZipcode}"></span><br />
@@ -52,7 +52,7 @@
             <td>
                 <span th:text="${order.shippingAddress.shippingAddressName}"></span><br />
                 <span
-                    th:text="${order.shippingAddress.shippingAddressStreet1}+' '+${order.billingAddres.shippingAddressStreet2}"></span><br />
+                    th:text="${order.shippingAddress.shippingAddressStreet1}+' '+${order.shippingAddress.shippingAddressStreet2}"></span><br />
                 <span th:text="${order.shippingAddress.shippingAddressCity}"></span><br />
                 <span th:text="${order.shippingAddress.shippingAddressState}"></span><br />
                 <span th:text="${order.shippingAddress.shippingAddressZipcode}"></span><br />
@@ -105,7 +105,7 @@
 <p>Best,</p>
 <p>Happy's Bookstore</p>
 
-    <script th:src="@{/js/fontawesome.min.js}"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="/js/fontawesome.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
