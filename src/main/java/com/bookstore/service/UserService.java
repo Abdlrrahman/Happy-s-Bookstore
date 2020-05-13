@@ -33,4 +33,6 @@ public interface UserService {
 
     void setUserDefaultShipping(Long userShippingId, User user);
 
+    User findById(Long id);
+
 }
