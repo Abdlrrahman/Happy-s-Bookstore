@@ -152,7 +152,7 @@ public class HomeController {
 		model.addAttribute("user", user);
 		model.addAttribute("userPaymentlist", user.getUserPaymentList());
 		model.addAttribute("userShippinglist", user.getUserShippingList());
-		// model.addAttribute("orderList", user.getOrderlist());
+		model.addAttribute("orderList", user.getOrderList());
 
 		UserShipping userShipping = new UserShipping();
 		model.addAttribute("userShipping", userShipping);
@@ -174,7 +174,7 @@ public class HomeController {
 		model.addAttribute("user", user);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
-		/* model.addAttribute("orderList", user.orderList()); */
+		model.addAttribute("orderList", user.getOrderList());
 
 		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("classActiveBilling", true);
@@ -201,7 +201,7 @@ public class HomeController {
 		model.addAttribute("stateList", stateList);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
-		/* model.addAttribute("orderList", user.orderList()); */
+		model.addAttribute("orderList", user.getOrderList());
 
 		return "myProfile";
 	}
@@ -223,6 +223,7 @@ public class HomeController {
 
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
+			model.addAttribute("orderList", user.getOrderList());
 
 			return "redirect:/listOfShippingAddresses";
 		}
@@ -235,7 +236,7 @@ public class HomeController {
 		model.addAttribute("user", user);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
-		/* model.addAttribute("orderList", user.orderList()); */
+		model.addAttribute("orderList", user.getOrderList());
 
 		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("classActiveShipping", true);
@@ -256,6 +257,7 @@ public class HomeController {
 		model.addAttribute("listOfShippingAddresses", true);
 		model.addAttribute("classActiveShipping", true);
 		model.addAttribute("listOfCreditCards", true);
+		model.addAttribute("orderList", user.getOrderList());
 
 		return "redirect:/listOfShippingAddresses";
 	}
@@ -282,6 +284,7 @@ public class HomeController {
 
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
+			model.addAttribute("orderList", user.getOrderList());
 
 			return "myProfile";
 		}
@@ -301,6 +304,7 @@ public class HomeController {
 
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
+		model.addAttribute("orderList", user.getOrderList());
 
 		return "redirect:/listOfShippingAddresses";
 	}
@@ -325,7 +329,7 @@ public class HomeController {
 		model.addAttribute("stateList", stateList);
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
-		/* model.addAttribute("orderList", user.orderList()); */
+		model.addAttribute("orderList", user.getOrderList());
 
 		return "myProfile";
 	}
@@ -342,6 +346,7 @@ public class HomeController {
 		model.addAttribute("listOfCreditCards", true);
 		model.addAttribute("classActiveBilling", true);
 		model.addAttribute("listOfShippingAddresses", true);
+		model.addAttribute("orderList", user.getOrderList());
 
 		return "redirect:/listOfCreditCards";
 	}
@@ -369,6 +374,7 @@ public class HomeController {
 
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
+			model.addAttribute("orderList", user.getOrderList());
 
 			return "myProfile";
 		}
@@ -392,6 +398,7 @@ public class HomeController {
 
 			model.addAttribute("userPaymentList", user.getUserPaymentList());
 			model.addAttribute("userShippingList", user.getUserShippingList());
+			model.addAttribute("orderList", user.getOrderList());
 
 			return "redirect:/listOfCreditCards";
 		}
@@ -411,6 +418,7 @@ public class HomeController {
 
 		model.addAttribute("userPaymentList", user.getUserPaymentList());
 		model.addAttribute("userShippingList", user.getUserShippingList());
+		model.addAttribute("orderList", user.getOrderList());
 
 		return "redirect:/listOfCreditCards";
 	}
@@ -461,6 +469,7 @@ public class HomeController {
 		mailSender.send(email);
 
 		model.addAttribute("emailSent", "true");
+		model.addAttribute("orderList", user.getOrderList());
 
 		return "myAccount";
 	}
@@ -488,6 +497,8 @@ public class HomeController {
 		model.addAttribute("user", user);
 
 		model.addAttribute("classActiveEdit", true);
+		model.addAttribute("orderList", user.getOrderList());
+
 		return "myProfile";
 	}
 
@@ -546,6 +557,7 @@ public class HomeController {
 				userDetails.getAuthorities());
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		model.addAttribute("orderList", user.getOrderList());
 
 		return "myProfile";
 	}
