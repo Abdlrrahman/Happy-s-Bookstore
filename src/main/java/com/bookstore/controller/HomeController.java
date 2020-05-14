@@ -38,6 +38,7 @@ import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.service.BookService;
+import com.bookstore.service.CartItemService;
 import com.bookstore.service.OrderService;
 import com.bookstore.service.UserPaymentService;
 import com.bookstore.service.UserService;
@@ -73,6 +74,9 @@ public class HomeController {
 
 	@Autowired
 	private OrderService orderService;
+
+	@Autowired
+	private CartItemService cartItemService;
 
 	@RequestMapping("/")
 	public String index() {
