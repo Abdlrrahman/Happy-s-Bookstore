@@ -28,6 +28,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 
 import com.bookstore.domain.Book;
+import com.bookstore.domain.CartItem;
+import com.bookstore.domain.Order;
 import com.bookstore.domain.User;
 import com.bookstore.domain.UserBilling;
 import com.bookstore.domain.UserPayment;
@@ -36,6 +38,7 @@ import com.bookstore.domain.security.PasswordResetToken;
 import com.bookstore.domain.security.Role;
 import com.bookstore.domain.security.UserRole;
 import com.bookstore.service.BookService;
+import com.bookstore.service.OrderService;
 import com.bookstore.service.UserPaymentService;
 import com.bookstore.service.UserService;
 import com.bookstore.service.UserShippingService;
@@ -67,6 +70,9 @@ public class HomeController {
 
 	@Autowired
 	private UserSecurityService userSecurityService;
+
+	@Autowired
+	private OrderService orderService;
 
 	@RequestMapping("/")
 	public String index() {
@@ -538,6 +544,39 @@ public class HomeController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 
 		return "myProfile";
+	}
+
+	@RequestMapping("/orderDetail")
+	public String orderDetail(@RequestParam("id") Long orderId, Principal principal, Model model) {
+		User user = userService.findByUsername(principal.getName());
+		Order order = orderService.findById(orderId);
+
+		if (order.getUser().getId() != user.getId()) {
+			return "badRequestPage";
+		} else {
+			List<CartItem> cartItemList = cartItemService.findByOrder(order);
+			model.addAttribute("cartItemList", cartItemList);
+			model.addAttribute("user", user);
+			model.addAttribute("order", order);
+
+			model.addAttribute("userPaymentList", user.getUserPaymentList());
+			model.addAttribute("userShippingList", user.getUserShippingList());
+			model.addAttribute("orderList", user.getOrderList());
+
+			UserShipping userShipping = new UserShipping();
+			model.addAttribute("userShipping", userShipping);
+
+			List<String> stateList = USConstants.listOfUSStatesCode;
+			Collections.sort(stateList);
+			model.addAttribute("stateList", stateList);
+
+			model.addAttribute("listOfShippingAddresses", true);
+			model.addAttribute("classActiveOrders", true);
+			model.addAttribute("listOfCreditCards", true);
+			model.addAttribute("displayOrderDetail", true);
+
+			return "myProfile";
+		}
 	}
 
 }
