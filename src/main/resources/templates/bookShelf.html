@@ -25,13 +25,17 @@
                 <div th:if="${emptyList}">
                     <h5><i>Oops, no result is found. Try somthing else or try again later</i></h5>
                 </div>
-                <table border="0", id="bookList">
-                    <thead><tr><tr></tr></tr></thead>
+                <table border="0" id="bookList">
+                    <thead>
+						<tr>
+							<th></th>
+						</tr>
+					</thead>
                     <tbody>
                        <tr class="book-item" data-th-each="book : ${bookList}">
                         <td>
                             <div th:if="${book != null}">
-                                <div class="row">
+                                <div class="row" style="margin-bottom: 50px;">
                                 <div class="col-3">
                                     <a th:href="@{/bookDetail?id=}+${book.id}"><img class="img-fluid shelf-book" th:src="#{adminPath}+@{/image/book/}+${book.id}+'.png'"/></a>
                                 </div>
@@ -65,5 +69,22 @@
 
 
 <div th:replace="common/header :: scripts"/>
+
+<script>
+    $(document).ready(function() {
+        $('#bookList').DataTable({
+            "lengthMenu":[5,10,15,20,-1],
+            "ordering":false,
+            stateSave:true
+        });
+        
+        $("#bookList").on('page.dt', function() {
+            $('html, body').animate({
+                scrollTop: $('#bookList').offset().top
+            }, 200);
+        });
+    });
+</script>
+
 </body>
 </html>
