@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] PUBLIC_MATCHERS = { "/css/**", "/js/**", "/image/**", "/", "/newUser",
             "/forgetPassword", "/login", "/bookshelf", "/bookDetail/**", "/webfonts/**", "/faq", "/hours",
-            "/searchByCategory" };
+            "/searchByCategory", "/searchBook" };
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
