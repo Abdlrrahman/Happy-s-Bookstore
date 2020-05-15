@@ -13,13 +13,13 @@
     <!-- data table -->
     <link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" />
     <link th:href="@{/css/dataTables.bootstrap4.min.css}" rel="stylesheet" />
-    
+
 </head>
 
 <body>
     <div th:fragment="navbar">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Happy's BookStore</a>
+            <a class="navbar-brand" th:href="@{/}">Happy's BookStore</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -34,7 +34,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" th:href="@{/bookshelf}">Browse the bookshelf</a>
-                            <a class="dropdown-item" href="#">Editor's choice</a>
+                            <a class="dropdown-item" href="#">Hours</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">FAQ</a>
                         </div>
@@ -67,6 +67,6 @@
         <!-- data table -->
         <script th:src="@{/js/jquery.dataTables.min.js}"></script>
         <script th:src="@{/js/dataTables.bootstrap.min.js}"></script>
-        
+
     </div>
 </body>
