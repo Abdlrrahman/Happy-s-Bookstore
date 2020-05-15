@@ -497,7 +497,6 @@ public class HomeController {
 		model.addAttribute("user", user);
 
 		model.addAttribute("classActiveEdit", true);
-		model.addAttribute("orderList", user.getOrderList());
 
 		return "myProfile";
 	}
@@ -550,6 +549,8 @@ public class HomeController {
 		model.addAttribute("updateSuccess", true);
 		model.addAttribute("user", currentUser);
 		model.addAttribute("classActiveEdit", true);
+		model.addAttribute("listOfShippingAddresses", true);
+		model.addAttribute("listOfCreditCards", true);
 
 		UserDetails userDetails = userSecurityService.loadUserByUsername(currentUser.getUsername());
 
