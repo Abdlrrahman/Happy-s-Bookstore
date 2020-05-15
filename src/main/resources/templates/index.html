@@ -110,12 +110,30 @@
 						<img src="/image/shelf.png" alt="shelf" class="img-fluid" />
 						<div class="carousel-caption">
 							<div class="row">
-								<div class="col-md-2"><img src="/image/logo.jpg" alt="logo" class="img-fluid" /></div>
-								<div class="col-md-2"><img src="/image/logo.jpg" alt="logo" class="img-fluid" /></div>
-								<div class="col-md-2"><img src="/image/logo.jpg" alt="logo" class="img-fluid" /></div>
-								<div class="col-md-2"><img src="/image/logo.jpg" alt="logo" class="img-fluid" /></div>
-								<div class="col-md-2"><img src="/image/logo.jpg" alt="logo" class="img-fluid" /></div>
-								<div class="col-md-2"><img src="/image/logo.jpg" alt="logo" class="img-fluid" /></div>
+								<div class="col-2">
+									<a th:href="@{/bookDetail(id=1)}"><img class="img-fluid"
+											th:src="#{adminPath}+@{/image/book/}+1+'.png'" /></a>
+								</div>
+								<div class="col-2">
+									<a th:href="@{/bookDetail(id=2)}"><img class="img-fluid"
+											th:src="#{adminPath}+@{/image/book/}+2+'.png'" /></a>
+								</div>
+								<div class="col-2">
+									<a th:href="@{/bookDetail(id=5)}"><img class="img-fluid"
+											th:src="#{adminPath}+@{/image/book/}+5+'.png'" /></a>
+								</div>
+								<div class="col-2">
+									<a th:href="@{/bookDetail(id=6)}"><img class="img-fluid"
+											th:src="#{adminPath}+@{/image/book/}+6+'.png'" /></a>
+								</div>
+								<div class="col-2">
+									<a th:href="@{/bookDetail(id=7)}"><img class="img-fluid"
+											th:src="#{adminPath}+@{/image/book/}+7+'.png'" /></a>
+								</div>
+								<div class="col-2">
+									<a th:href="@{/bookDetail(id=8)}"><img class="img-fluid"
+											th:src="#{adminPath}+@{/image/book/}+8+'.png'" /></a>
+								</div>
 							</div>
 						</div>
 					</div>
