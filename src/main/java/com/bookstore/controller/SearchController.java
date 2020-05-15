@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bookstore.domain.Book;
@@ -48,7 +49,7 @@ public class SearchController {
 		return "bookshelf";
 	}
 
-	@RequestMapping("/searchBook")
+	@RequestMapping(value = "/searchBook", method = RequestMethod.POST)
 	public String searchBook(@ModelAttribute("keyword") String keyword, Principal principal, Model model) {
 		if (principal != null) {
 			String username = principal.getName();
