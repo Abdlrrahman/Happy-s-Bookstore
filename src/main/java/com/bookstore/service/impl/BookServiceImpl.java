@@ -1,5 +1,6 @@
 package com.bookstore.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.bookstore.domain.Book;
@@ -23,6 +24,21 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book findById(Long id) {
         return bookRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Book> findByCategory(String category) {
+        List<Book> bookList = bookRepository.findByCategory(category);
+
+        List<Book> activeBookList = new ArrayList<>();
+
+        for (Book book : bookList) {
+            if (book.isActive()) {
+                activeBookList.add(book);
+            }
+        }
+
+        return activeBookList;
     }
 
 }
