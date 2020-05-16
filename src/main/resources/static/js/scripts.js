@@ -17,9 +17,12 @@ function checkPasswordMatch() {
         if (password != confirmPassword) {
             $("#checkPasswordMatch").html("Passwords do not match!");
             $("#updateUserInfoButton").prop("disabled", true);
-        } else {
+        } else if (password == confirmPassword && password.length > 8 && password.match(/[A-z]/) && password.match(/[A-Z]/) && password.match(/\d/)) {
             $("#checkPasswordMatch").html("Passwords match");
             $("#updateUserInfoButton").prop("disabled", false);
+        } else {
+            $("#checkPasswordMatch").html("The password should be longer than 8 charcters, contains at least one capital letter and one number");
+            $("#updateUserInfoButton").prop("disabled", true);
         }
     }
 }
